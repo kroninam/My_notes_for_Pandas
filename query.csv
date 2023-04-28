@@ -1,0 +1,11 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2023-02-16T03:04:48.169Z,55.8999,113.5555,10,4.1,mb,24,51,3.813,0.81,us,us6000jr8h,2023-04-22T21:33:26.040Z,"28 km SSE of Severomuysk, Russia",earthquake,5.84,1.899,0.185,8,reviewed,us,us
+2023-01-25T03:57:50.755Z,56.1588,114.1836,10,4,mb,26,51,3.628,0.33,us,us6000jj2v,2023-04-11T18:51:30.040Z,"Buryatiya, Russia",earthquake,7.02,1.91,0.183,8,reviewed,us,us
+2022-11-19T06:57:59.002Z,56.4336,113.2773,10,4.3,mb,29,109,7.4,0.65,us,us7000iqy4,2023-01-30T06:00:07.040Z,"33 km NNW of Severomuysk, Russia",earthquake,10.84,1.924,0.119,20,reviewed,us,us
+2022-09-19T06:07:54.187Z,56.7109,117.4617,10,4.4,mb,72,46,3.972,0.73,us,us7000i97t,2022-11-26T20:57:41.040Z,"52 km WSW of Novaya Chara, Russia",earthquake,7.81,1.869,0.066,66,reviewed,us,us
+2022-09-03T04:36:20.356Z,56.7505,117.4842,10,4.7,mb,70,43,3.95,0.96,us,us7000i4v8,2022-11-15T19:06:01.040Z,"50 km W of Novaya Chara, Russia",earthquake,6.86,1.847,0.033,276,reviewed,us,us
+2022-08-21T02:56:03.942Z,54.9405,110.744,10,4.7,mb,68,30,4.816,0.94,us,us6000icgs,2022-11-01T15:12:38.040Z,"74 km NNE of Kurumkan, Russia",earthquake,7.17,1.793,0.037,228,reviewed,us,us
+2022-06-11T05:46:33.656Z,56.1485,113.45,10,4.3,mb,29,83,7.316,0.48,us,us7000hgnz,2022-08-21T00:15:51.040Z,"1 km E of Severomuysk, Russia",earthquake,6.3,1.9,0.129,17,reviewed,us,us
+2022-05-28T19:02:48.992Z,54.968,125.3545,10,4,mb,45,45,6.669,0.64,us,us7000hdbl,2022-08-06T22:13:02.040Z,"45 km ESE of Tynda, Russia",earthquake,5.2,1.9,0.113,21,reviewed,us,us
+2022-05-12T22:59:34.779Z,57.1961,122.1788,10,4.2,mb,43,62,6.162,0.57,us,us6000hm2e,2022-07-22T18:31:00.040Z,"Southwestern Sakha, Russia",earthquake,6.4,1.8,0.112,22,reviewed,us,us
+2022-04-14T03:33:47.594Z,56.3817,112.6278,10,4.8,mb,,34,7.08,0.52,us,us7000h21x,2022-06-20T22:08:11.040Z,"55 km WNW of Severomuysk, Russia",earthquake,8.1,1.8,0.035,250,reviewed,us,us

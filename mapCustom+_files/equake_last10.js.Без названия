@@ -1,0 +1,13 @@
+// Genearted on 2023-04-28 11:10:02
+var aEquake = {
+	'20231799': {date:'2023-04-28 05:18:14', lat:32.04, lon:141.04, depth:60, nsta:17, ms:'-', mpv:'4.6', i0:'-', name_ru:'Юго-восточнее Хонсю, Япония', name_en:'Southeast of Honshu, Japan'},
+	'20231797': {date:'2023-04-28 04:24:46', lat:52.31, lon:159.71, depth:60, nsta:27, ms:'-', mpv:'4.8', i0:'2-2.5 ', name_ru:'У восточного побережья Камчатки', name_en:'Off east coast of Kamchatka'},
+	'20231796': {date:'2023-04-28 03:51:06', lat:-25.09, lon:178.42, depth:575, nsta:27, ms:'-', mpv:'5.3', i0:'-', name_ru:'Южнее островов Фиджи', name_en:'South of Fiji Islands'},
+	'20231798': {date:'2023-04-28 03:34:10', lat:-25.21, lon:178.32, depth:570, nsta:21, ms:'-', mpv:'5.3', i0:'-', name_ru:'Южнее островов Фиджи', name_en:'South of Fiji Islands'},
+	'20231795': {date:'2023-04-28 03:13:44', lat:-25.35, lon:178.69, depth:600, nsta:58, ms:'-', mpv:'6.4', i0:'-', name_ru:'Южнее островов Фиджи', name_en:'South of Fiji Islands'},
+	'20231794': {date:'2023-04-28 01:07:46', lat:-59.91, lon:-28.05, depth:100, nsta:46, ms:'-', mpv:'5.8', i0:'3.5-4 ', name_ru:'Район Южных Сандвичевых островов', name_en:'South Sandwich Islands region'},
+	'20231793': {date:'2023-04-27 22:39:03', lat:36.08, lon:59.25, depth:10, nsta:41, ms:'-', mpv:'5.1', i0:'5.5-6 ', name_ru:'Туркменистан - Иран погран.область', name_en:'Turkmenistan-Iran border region'},
+	'20231792': {date:'2023-04-27 22:08:55', lat:26.49, lon:128.26, depth:33, nsta:26, ms:'-', mpv:'4.6', i0:'2.5-3 ', name_ru:'Острова Рюкю, Япония', name_en:'Ryukyu Islands, Japan'},
+	'20231791': {date:'2023-04-27 21:55:34', lat:11.44, lon:141.85, depth:10, nsta:17, ms:'-', mpv:'4.7', i0:'4.5-5 ', name_ru:'Западные Каролинскиe островa, Микронезия', name_en:'W. Caroline Islands, Micronesia'},
+	'20231790': {date:'2023-04-27 19:45:55', lat:29.77, lon:81.64, depth:10, nsta:53, ms:'-', mpv:'5.4', i0:'6-6.5 ', name_ru:'Непал', name_en:'Nepal'}
+};

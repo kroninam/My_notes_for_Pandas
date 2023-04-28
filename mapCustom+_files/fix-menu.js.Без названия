@@ -1,0 +1,144 @@
+var m1 = 163; /* высота шапки в пикселях */
+var m2 = 2; /* отступ, когда во время прокрутки шапка уже не видна */
+var menuID = "menu-top-almost-fixed";/* id горизонтального меню для закрепления */
+var menuOpacityOnChange = "0.7";
+/* прозрачность меню при скроллинге:
+1   - непрозрачное,
+0.5 - полупрозрачное
+0.0 - полностью прозрачное*/
+var menuOpacityOnChangeIE = menuOpacityOnChange * 100;
+
+/* функции кроссбраузерного определения
+размера документа */
+function getWindowWidth() {
+
+	var xScroll;
+	if (window.innerHeight && window.scrollMaxY) {
+		xScroll = document.body.scrollWidth;
+	} else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+		xScroll = document.body.scrollWidth;
+	} else if (document.documentElement && document.documentElement.scrollHeight > document.documentElement.offsetHeight){ // Explorer 6 strict mode
+		xScroll = document.documentElement.scrollWidth;
+	} else { // Explorer Mac...would also work in Mozilla and Safari
+		xScroll = document.body.offsetWidth;
+	}
+	
+	var windowWidth;
+	if (self.innerHeight) { // all except Explorer
+		windowWidth = self.innerWidth;
+	} else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+		windowWidth = document.documentElement.clientWidth;
+	} else if (document.body) { // other Explorers
+		windowWidth = document.body.clientWidth;
+	}
+// for small pages with total width less then width of the viewport
+	if(xScroll < windowWidth){
+		pageWidth = windowWidth;
+	} else {
+		pageWidth = xScroll;
+	}
+	
+	return pageWidth;
+}
+
+function getWindowHeight() {
+
+	var yScroll;
+	if (window.innerHeight && window.scrollMaxY) {
+		yScroll = window.innerHeight + window.scrollMaxY;
+	} else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+		yScroll = document.body.scrollHeight;
+	} else if (document.documentElement && document.documentElement.scrollHeight > document.documentElement.offsetHeight){ // Explorer 6 strict mode
+		yScroll = document.documentElement.scrollHeight;
+	} else { // Explorer Mac...would also work in Mozilla and Safari
+		yScroll = document.body.offsetHeight;
+	}
+
+	var windowHeight;
+	if (self.innerHeight) { // all except Explorer
+		windowHeight = self.innerHeight;
+	} else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+		windowHeight = document.documentElement.clientHeight;
+	} else if (document.body) { // other Explorers
+		windowHeight = document.body.clientHeight;
+	}
+	
+// for small pages with total height less then height of the viewport
+	if(yScroll < windowHeight){
+		pageHeight = windowHeight;
+	} else {
+		pageHeight = yScroll;
+	}
+
+	return pageHeight;
+}
+
+/* функция кроссбраузерного определения
+отступа от верха документа к текущей позиции
+скроллера прокрутки */
+function getScrollTop() {
+	var scrOfY = 0;
+
+	if( typeof( window.pageYOffset ) == "number" ) { //Netscape compliant
+		scrOfY = window.pageYOffset;
+	} else if( document.body && ( document.body.scrollLeft
+           || document.body.scrollTop ) ) {			//DOM compliant
+		scrOfY = document.body.scrollTop;
+	} else if( document.documentElement
+           && ( document.documentElement.scrollLeft
+            || document.documentElement.scrollTop ) ) { //IE6 Strict
+		scrOfY = document.documentElement.scrollTop;
+	}
+	
+	return scrOfY;
+}
+
+/* функция, которая устанавливает верхний отступ
+ для «плавающего» фиксированного вертикального
+меню в зависимости от положения
+ скроллера и видимости шапки */
+function marginMenuTop() {
+	var s    = document.getElementById(menuID);
+
+	if(typeof s != "undefined" && s){
+		var top  = getScrollTop();
+		if (top+m2 < m1) {
+//			s.style.top       = (m1-top) + "px";
+//			s.style.opacity   = "1";
+			s.style.marginLeft = "";
+			s.style.position  = "";
+			s.style.filter    = s.style.filter.replace("progid:DXImageTransform.Microsoft.Alpha(opacity="+menuOpacityOnChangeIE+")","");
+		} else {
+			var d_w	 = getWindowWidth();
+			var left = ((d_w - s.clientWidth) / 2) - 20; // 20px - left scroll-bar
+			if(left < 0) left = 0;
+			
+//			s.style.top       = m2 + "px";
+//			s.style.opacity   = menuOpacityOnChange;
+			s.style.marginLeft = left + "px";
+			s.style.position  = "fixed";
+			s.style.filter    = s.style.filter.replace("progid:DXImageTransform.Microsoft.Alpha(opacity="+menuOpacityOnChangeIE+")","");
+			s.style.filter    += "progid:DXImageTransform.Microsoft.Alpha(opacity="+menuOpacityOnChangeIE+")";
+		}
+	}
+}
+
+/* функция регистрирует
+вычисление позиции
+ «плавающего» меню при прокрутке страницы */
+function setMenuPosition() {
+	if(typeof window.addEventListener != "undefined"){
+		window.addEventListener("scroll", marginMenuTop, false);
+	} else if(typeof window.attachEvent != "undefined"){
+		window. attachEvent("onscroll", marginMenuTop);
+	}
+}
+
+/* регистрируем вызов
+необходимых функций после
+ загрузки страницы */
+if(typeof window.addEventListener != "undefined") {
+    window.addEventListener("load", setMenuPosition, false);
+} else if(typeof window.attachEvent != "undefined"){
+    window. attachEvent("onload", setMenuPosition);
+}

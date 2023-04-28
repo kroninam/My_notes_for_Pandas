@@ -1,0 +1,286 @@
+//Вспомогательные функции
+
+function MM_swapImgRestore() { //v3.0
+    var i, x, a = document.MM_sr;
+    for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++)
+        x.src = x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+    var d = document;
+    if (d.images) {
+        if (!d.MM_p) d.MM_p = new Array();
+        var i, j = d.MM_p.length,
+            a = MM_preloadImages.arguments;
+        for (i = 0; i < a.length; i++)
+            if (a[i].indexOf("#") != 0) {
+                d.MM_p[j] = new Image;
+                d.MM_p[j++].src = a[i];
+            }
+    }
+}
+
+function MM_findObj(n, d) { //v4.0
+    var p, i, x;
+    if (!d) d = document;
+    if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+        d = parent.frames[n.substring(p + 1)].document;
+        n = n.substring(0, p);
+    }
+    if (!(x = d[n]) && d.all) x = d.all[n];
+    for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+    for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+    if (!x && document.getElementById) x = document.getElementById(n);
+    return x;
+}
+
+function MM_swapImage() { //v3.0
+    var i, j = 0,
+        x, a = MM_swapImage.arguments;
+    document.MM_sr = new Array;
+    for (i = 0; i < (a.length - 2); i += 3)
+        if ((x = MM_findObj(a[i])) != null) {
+            document.MM_sr[j++] = x;
+            if (!x.oSrc) x.oSrc = x.src;
+            x.src = a[i + 2];
+        }
+}
+
+function getDate() {
+    now = new Date();
+    var d = now.getDate();
+    var m = now.getMonth() + 1;
+    if (d < 10) d = '0' + d;
+    if (m < 10) m = '0' + m;
+    return now.getFullYear() + '-' + m + '-' + d;
+}
+
+function def(a, b) {
+    if (def_name() == 6) {
+        a = a - 15;
+    }
+    if (def_name() == 7) {
+        a = a - 15;
+    }
+    if (def_name() == 8) {
+        a = a - 15;
+    }
+    a = a - 35;
+    b = 355 - b;
+    var num = document.forms[0].elements[0].value;
+    top.window.location.assign('/cgi-bin/ceme/show_xy.pl?xx=' + a + '&yy=' + b + '&num=' + num + '&rad=500');
+}
+
+function def_name() {
+    if (navigator.appName.substring(0, 9) == 'Microsoft') {
+        var binfo = new Array();
+        binfo = navigator.appVersion.split(";");
+        if (binfo[1] == " MSIE 4.01") {
+            alert("Ваш браузер нуждается в обновлении !");
+        }
+        if (binfo[1] == " MSIE 6.0") {
+            return 6;
+        }
+        if (binfo[1] == " MSIE 7.0") {
+            return 7;
+        }
+        if (binfo[1] == " MSIE 8.0") {
+            return 8;
+        }
+    }
+}
+
+
+function EarthQuakeCompare(eq0, eq1) {
+    if (eq0[1] == eq1[1] && eq0[2] == eq1[2]) return true;
+    return false;
+}
+
+
+
+function FormToggle() {
+  var div = document.getElementById("formAdv");
+  if (div.style.display == 'block')
+    div.style.display = 'none';
+  else
+    div.style.display = 'block'
+}
+
+
+// try {
+//     txt=txt + xx[0].firstChild.nodeValue;
+// } catch (er) {
+//     txt=txt + "-";
+// }
+
+
+
+function ParseEquakeJson(jsonText) {
+    var equake = JSON.parse(jsonText);
+    // var aStations = {};
+    // for (var i=0; i<stations.length; i++) {
+    //     s = stations[i];
+    //     var delta = Number(s.delta).toFixed(2);
+    //     var residual = Number(s.residual).toFixed(2);
+    //     // console.log(delta + " " + residual);
+    //     aStations[s.cod] = {"lat":s.lat, "lon":s.lon, "time":s.time, "phase":s.phase, "delta":delta, "azimuth":s.azimuth, "residual":residual, "ms":s.ms, "mb":s.mb, "net":s.net, "source":s.source};
+    // }
+    return equake;
+}
+
+
+function TableAlign(tableId) {
+    var table = document.getElementById(tableId);
+
+    // get the th elements
+    var ths = table.rows[0].cells;
+    var tds = table.rows[1].cells;
+
+//var txt0 = '', txt1='', txt2='';
+//var txtTd0 = '', txtTd1='', txtTd2='';
+    for (var col=0; col<ths.length; col++) {
+        var th = ths[col];
+        var td = tds[col];
+        if (!bMsie8) {
+            th.width = td.clientWidth;
+            td.width = th.clientWidth-6;
+        }
+//txt0 += th.clientWidth + " ";
+//txt1 += th.width + " ";
+//txt2 += th.style.width + " ";
+//txtTd0 += td.clientWidth + " ";
+//txtTd1 += td.width + " ";
+//txtTd2 += td.style.width + " ";
+    }
+//log.innerHTML = "div log<br>" +
+  // "th<br>clientWidth " + txt0 +   "<br>width " + txt1 +   "<br>style.width " + txt2 + "<br>" +
+  // "td<br>clientWidth " + txtTd0 + "<br>width " + txtTd1 + "<br>style.width " + txtTd2;
+}
+
+function AArrayGetLength(arr) {
+    var c=0;
+    for (var key in arr)
+        c++;
+    return c;
+}
+
+function PrintArray(arr) {
+    
+    for (var key in arr) {
+        var arr1 = arr[key];
+        var txt='';
+        for (var key1 in arr1) {
+            txt += key1+":"+arr1[key1]+", ";
+        }
+        console.log("["+key+"]:"+txt);
+    }
+}
+
+
+function ParseQuery(qstr)
+{
+    qstr = decodeURI(qstr);
+    console.log("qstr " + qstr);
+    qst = qstr.replace(/&amp;/g, '&');
+    console.log("qstr " + qstr);
+    // var query = {};
+    // var a = qstr.split('&');
+    // for (var i in a) {
+    //     var b = a[i].split('=');
+    //     query[decodeURIComponent(b[0])] = decodeURIComponent(b[1]);
+    // }
+    // return query;
+}
+
+
+function keys(obj)
+{
+    var keys = [];
+    for(var key in obj)
+        if (obj.hasOwnProperty(key)) keys.push(key);
+    return keys;
+}
+
+
+function ArrayLength(arr)
+{
+    return keys(arr).length;
+}
+
+
+function ElementByIdSetText(elementId, text)
+{
+    document.getElementById(elementId).innerHTML = text;
+}
+
+
+function validateInt(value)
+{
+  return value.replace(/[^0-9]/g,'')
+}
+
+
+function validateFloat(value)
+{
+  return value.replace(/[^0-9\-\.]/g,'')
+}
+
+
+
+function validateDate(value)
+{
+  return value.replace(/[^0-9\-]/g,'')
+}
+
+
+function FindPosition(oElement)
+{
+  if(typeof( oElement.offsetParent ) != "undefined")
+  {
+    for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+    {
+      posX += oElement.offsetLeft;
+      posY += oElement.offsetTop;
+    }
+      return [ posX, posY ];
+    }
+    else
+    {
+      return [ oElement.x, oElement.y ];
+    }
+}
+function GetCoordinates(e, imgId)
+{
+  var PosX = 0;
+  var PosY = 0;
+  var ImgPos;
+
+  ImgPos = FindPosition(document.getElementById(imgId));
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY)
+  {
+    PosX = e.pageX;
+    PosY = e.pageY;
+  }
+  else if (e.clientX || e.clientY)
+    {
+      PosX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+      PosY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+  PosX = PosX - ImgPos[0];
+  PosY = PosY - ImgPos[1];
+  // document.getElementById("x").innerHTML = PosX;
+  // document.getElementById("y").innerHTML = PosY;
+  return [PosX, PosY];
+}
+
+function SortArray(arr)
+{
+    var aKeysSorted;
+    // console.log('navigator.appVersion='+navigator.userAgent);
+    if (navigator.appVersion.search('Chrome') > 0 || navigator.appVersion.search('Trident/7') > 0)
+        aKeysSorted = keys(arr).sort(function(a, b){return Number(b)-Number(a)});
+    else
+        aKeysSorted = keys(arr);
+    return aKeysSorted;
+}
